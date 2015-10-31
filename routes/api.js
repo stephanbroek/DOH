@@ -60,6 +60,32 @@ function reqAuthToken(uid, callback)
   });
 }
 
+function philipsObsList(uid, type, startTimestamp, endTimestamp, callback)
+{
+  getAuthToken(uid, function(accesToken)
+  {
+    start = dateFormat(new Date(startTimestamp * 1000),"yyyy-mm-dd'T'HH:mm");
+    end = dateFormat(new Date(endTimestamp * 1000), "yyyy-mm-dd'T'HH:mm"); 
+    var options = {
+      url: "https://www.measuretomotivate.philips.com/api/fhir/Observation",
+      method: 'GET',
+      headers: headers,
+      qs: {"patient.id": uid, type: type, start: start, end: end}
+    }
+    options.headers.Authorization = "bearer " + accesToken;
+    request(options, function(err, response, body)
+    {
+      if(err)
+      {
+        console.log(err);
+        return;
+      }
+      data = JSON.parse(body).entry;
+      callback(data);
+    });
+  });
+}
+
 router.get('/test', function(req, res, next)
 {
   //some function
@@ -80,39 +106,21 @@ router.get('/tokentest/:uid', function(req, res, next)
 
 router.get('/sleep/:uid', function(req, res, next)
 {
-  getAuthToken(req.params.uid, function(accesToken)
+  startTimestamp = req.query.start;
+  endTimestamp = req.query.end;
+  philipsObsList(req.params.uid, "sleepduration", startTimestamp, endTimestamp, function(data)
   {
-    startTimestamp = req.query.start;
-    endTimestamp = req.query.end;
-    startPhilips = dateFormat(new Date(startTimestamp * 1000),"yyyy-mm-dd'T'HH:mm");
-    endPhilips = dateFormat(new Date(endTimestamp * 1000), "yyyy-mm-dd'T'HH:mm"); 
-    var options = {
-      url: "https://www.measuretomotivate.philips.com/api/fhir/Observation",
-      method: 'GET',
-      headers: headers,
-      qs: {"patient.id": req.params.uid, type: "sleepduration", start: startPhilips, end: endPhilips}
-    }
-    options.headers.Authorization = "bearer " + accesToken;
-    request(options, function(err, response, body)
+    ret_res = [];
+    data.forEach(function(val, index, array)
     {
-      if(err)
+      ret_res.push(
       {
-        console.log(err);
-        return;
-      }
-      data = JSON.parse(body).entry
-      ret_res = [];
-      data.forEach(function(val, index, array)
-      {
-        ret_res.push(
-        {
-          start: val.content.appliesPeriod.start, 
-          end: val.content.appliesPeriod.end, 
-          length: val.content.valueQuantity.value/3600
-        });
+        start: val.content.appliesPeriod.start, 
+        end: val.content.appliesPeriod.end, 
+        length: val.content.valueQuantity.value/3600
       });
-      res.json(ret_res);
     });
+    res.json(ret_res);
   });
 });
 
