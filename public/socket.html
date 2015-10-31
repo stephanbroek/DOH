@@ -1,0 +1,13 @@
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect(window.location.host);
+  socket.on('err', function (data) {
+    console.log(data);
+  });
+  socket.on('place/users', function (data) {
+    console.log(data);
+  });
+  socket.on('user/places', function (data) {
+    console.log(data);
+  });
+</script>
