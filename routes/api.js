@@ -124,4 +124,24 @@ router.get('/sleep/:uid', function(req, res, next)
   });
 });
 
+router.get('/heartrate/:uid', function(req, res, next)
+{
+  startTimestamp = req.query.start;
+  endTimestamp = req.query.end;
+  philipsObsList(req.params.uid, "heartrate", startTimestamp, endTimestamp, function(data)
+  {
+    ret_res = [];
+    data.forEach(function(val, index, array)
+    {
+      ret_res.push(
+      {
+   	moment: val.content.appliesDateTime,
+        heartrate: val.content.valueQuantity.value
+      });
+    });
+    res.json(ret_res);
+  });
+});
+
+
 module.exports = router;
