@@ -17,7 +17,8 @@ $(function() {
 		},
 		success: function (data, status, jqXHR)
 		{
-			$("body").html(data.body)
+			$("body").html(data.body);
+			$("#main").html(data.main);
 		}
 	});
 	$("body").html("test");
