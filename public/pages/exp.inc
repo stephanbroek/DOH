@@ -11,12 +11,9 @@
 
 	</div>
 
-	<div class="butn">
+	<button type="button" 
+	class="btn btn-primary btn-lg" id="btn-start">
+		<span class="glyphicon glyphicon-flash" aria-hidden="true"></span> Start experiment.
+	</button>
 
-		<button type="button" 
-		class="btn btn-primary btn-lg" id="btn-start">
-			<span class="glyphicon glyphicon-flash" aria-hidden="true"></span> Start experiment.
-		</button>
-
-	</div>
 </div>

@@ -6,6 +6,6 @@ $("#hist > tbody tr").click(function(event) {currentExperiment = event.currentTa
 if(activeExperiment != undefined)
 {
 	$("#current").html("Current:");
-	$("#curr > tbody").append("<tr id=" + activeExperiment + ">\n<td>" + experiments[activeExperiment].difc + "</td>\n<td>" + experiments[activeExperiment].desc + "</td>\n</tr>");
+	$("#curr > tbody").append("<tr id=" + activeExperiment + ">\n<td>" + experiments[activeExperiment].difc + "</td>\n<td>" + experiments[activeExperiment].desc + "</td>\n</tr>").click(function(event) {getPage("result");});
 	$("#current-tbl").attr("style","");
 }

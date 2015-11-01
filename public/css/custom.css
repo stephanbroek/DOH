@@ -119,13 +119,8 @@ body {
 	margin-bottom: 20px;
 }
 
-#experiment .butn {
-	margin: 10px auto;
-	padding: 10px;
-}
-
 #experiment button {
-	margin: 40px 24%;
+	margin: 40px 28%;
 }
 
 #desc {
@@ -143,4 +138,21 @@ body {
 #expl {
 	margin-top: 30px;
 	margin-left: 20px;
+}
+
+#result input[type=radio] {
+	margin: 9px;
+}
+
+#result input[type=radio]:first-child {
+	margin-left: 15px;
+}
+
+#result .q {
+	margin-top: 15px;
+	font-weight: bold;
+}
+
+#result button {
+	margin: 40px 35%;
 }
