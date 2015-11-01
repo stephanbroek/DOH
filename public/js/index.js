@@ -1,11 +1,14 @@
 $(function() {
+	$("#nav-home").click(function() {getPage("home")})
 	getPage("home");
 });
 
 function getPage(page)
 {
+	scripArray = ["gantt"];
+
 	$.ajax({
-		url: "pages/" + page + ".json",
+		url: "pages/" + page + ".inc",
 		accepts: "application/html; charset=utf-8",
 		async: true,
 		cache: false,
@@ -21,9 +24,10 @@ function getPage(page)
 		},
 		success: function (data, status, jqXHR)
 		{
-			$("#main").html(data.html);
-			if(data.script != undefined)
+			$("#main").html(data);
+			if(scripArray.indexOf(page) != -1)
 			{
+				console.log("ping");
 				$.getScript("pages/" + page + ".js");
 			}
 		}
