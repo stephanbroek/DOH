@@ -117,7 +117,7 @@ router.get('/sleep/:uid', function(req, res, next)
       {
         start: val.content.appliesPeriod.start, 
         end: val.content.appliesPeriod.end, 
-        length: val.content.valueQuantity.value/3600
+        duration: val.content.valueQuantity.value/60
       });
     });
     res.json(ret_res);

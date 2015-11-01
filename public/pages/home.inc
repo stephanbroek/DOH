@@ -2,7 +2,7 @@
 	<div id="title">SleepEZ</div>
 
 	<button type="button" 
-	class="btn btn-primary btn-lg" id="btn-start-exp">
+	class="btn btn-primary btn-lg" id="btn-list">
 		<span class="glyphicon glyphicon-flash" aria-hidden="true"></span> Start sleep experiment.
 	</button>
 
