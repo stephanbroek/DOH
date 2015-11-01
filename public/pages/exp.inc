@@ -3,17 +3,20 @@
 		Experiment
 	</div>
 
-	<div id="desc-labl" class="labl">
-		Description:
-	</div>
 	<div id="desc" class="info">
 
 	</div>
 
-	<div id="expl-labl" class="labl">
-		Explanation: 
-	</div>
 	<div id="expl" class="info"> 
+
+	</div>
+
+	<div class="butn">
+
+		<button type="button" 
+		class="btn btn-primary btn-lg" id="btn-start">
+			<span class="glyphicon glyphicon-flash" aria-hidden="true"></span> Start experiment.
+		</button>
 
 	</div>
 </div>
