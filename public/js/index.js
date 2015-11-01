@@ -5,7 +5,7 @@ $(function() {
 	getPage("home");
 });
 
-experiments = [{id: 0, num: 1, difc: "L", desc: "Sleep Basics", expl: "A basic lesson about sleep"},
+experiments = [{id: 0, num: 1, difc: "L", desc: "Sleep Basics", expl: "<p>A basic lesson about sleep</p>\n\n<p>A bit longer and with more text to explain stuff in more detail than you can on a single line as that is important</p>"},
 	{id: 1, num: 1, difc: 1, desc: "No Screens", expl: "Don't use a screen for 2 hours before going to bed"},
 	{id: 2, num: 2, difc: 1, desc: "Read Before Bed", expl: "Read a book for an hour before bed"},
 	{id: 3, num: 3, difc: 1, desc: "Earplugs", expl: "Wear earplugs in bed"},
@@ -17,7 +17,7 @@ hist = [{id: 1, res:"4/5"},{id: 3, res:"2/5"}]
 
 function getPage(page)
 {
-	scripArray = ["gantt","home"];
+	$("#head").html("");
 
 	$.ajax({
 		url: "pages/" + page + ".inc",
