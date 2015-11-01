@@ -47,6 +47,7 @@ $.ajax({
 			currentCat.segments.push({
 				start: start.getHours()*60+start.getMinutes() + offset,
 				duration: obj.duration,
+				duration_hour: Math.ceil(obj.duration/60*10)/10,
 				color: "#7B742C",
 				task: ""
 			});
@@ -67,7 +68,7 @@ $.ajax({
 			"brightnessStep": 10,
 			"graph": {
 				"fillAlphas": 1,
-				"balloonText": "[[duration]] minutes"
+				"balloonText": "[[duration_hour]] hour(s)"
 			},
 			"rotate": false,
 			"categoryField": "category",
