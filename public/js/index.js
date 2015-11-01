@@ -1,10 +1,14 @@
 $(function() {
+	getPage("home");
+});
+
+function getPage(page)
+{
 	$.ajax({
-		url: "api/test",
-		accepts: "application/json; charset=utf-8",
+		url: "pages/" + page + ".json",
+		accepts: "application/html; charset=utf-8",
 		async: true,
 		cache: false,
-		contentType: "application/json; charset=utf-8",
 		method: "GET",
 		data: "",
 		error: function (jqXHR, status, error)
@@ -17,7 +21,11 @@ $(function() {
 		},
 		success: function (data, status, jqXHR)
 		{
-			//stuff
+			$("#main").html(data.html);
+			if(data.script != undefined)
+			{
+				$.getScript("pages/" + page + ".js");
+			}
 		}
 	});
-});
+}
