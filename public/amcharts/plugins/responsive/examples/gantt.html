@@ -1,0 +1,161 @@
+﻿<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		
+		<script src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script src="http://www.amcharts.com/lib/3/serial.js"></script>
+		<script src="http://www.amcharts.com/lib/3/gantt.js"></script>
+		<script src="../responsive.min.js"></script>
+
+		<style>
+		body, html {
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			overflow: hidden;
+		}
+
+		body {
+			width: 500px;
+			height: 701px;
+			padding: 15px;
+		}
+
+		#chartdiv {
+			width: 100%;
+			height: 100%;
+		}
+		</style>
+
+		<script>
+			AmCharts.useUTC = true;
+			var chart = AmCharts.makeChart( "chartdiv", {
+				"type": "gantt",
+				"period": "mm",
+				"balloonDateFormat": "JJ:NN",
+				"columnWidth": 0.3,
+				"valueAxis": {
+					"type": "date",
+					"minimum": 720,
+					"maximum": 2160
+				},
+				"brightnessStep": 10,
+				"graph": {
+					"fillAlphas": 1,
+					"balloonText": ""
+				},
+				"rotate": false,
+				"categoryField": "category",
+				"segmentsField": "segments",
+				"colorField": "color",
+				"startDate": "2015-01-01",
+				"startField": "start",
+				"endField": "end",
+				"durationField": "duration",
+				"dataProvider": [ {
+					"category": "Mon-Tue",
+					"segments": [ {
+						"start": 13*60+22,
+						"duration": 100,
+						"color": "#7B742C",
+						"task": "Task #1"
+					}, {
+						"start": 15,
+						"duration": 2,
+						"color": "#7E585F",
+						"task": "Task #2"
+					}, {
+						"duration": 2,
+						"color": "#CF794A",
+						"task": "Task #3"
+					} ]
+				}, {
+					"category": "Tue-Wed",
+					"segments": [ {
+						"start": 10,
+						"duration": 2,
+						"color": "#7E585F",
+						"task": "Task #2"
+					}, {
+						"duration": 1,
+						"color": "#CF794A",
+						"task": "Task #3"
+					}, {
+						"duration": 4,
+						"color": "#7B742C",
+						"task": "Task #1"
+					} ]
+				}, {
+					"category": "Wed-Thu",
+					"segments": [ {
+						"start": 12,
+						"duration": 2,
+						"color": "#7E585F",
+						"task": "Task #2"
+					}, {
+						"start": 16,
+						"duration": 2,
+						"color": "#FFE4C4",
+						"task": "Task #4"
+					} ]
+				}, {
+					"category": "Thu-Fri",
+					"segments": [ {
+						"start": 9,
+						"duration": 6,
+						"color": "#7B742C",
+						"task": "Task #1"
+					}, {
+						"duration": 4,
+						"color": "#7E585F",
+						"task": "Task #2"
+					} ]
+				}, {
+					"category": "Fri-Sat",
+					"segments": [ {
+						"start": 8,
+						"duration": 1,
+						"color": "#CF794A",
+						"task": "Task #3"
+					}, {
+						"duration": 4,
+						"color": "#7B742C",
+						"task": "Task #1"
+					} ]
+				}, {
+					"category": "Sat-Sun",
+					"segments": [ {
+						"start": 15,
+						"duration": 3,
+						"color": "#7E585F",
+						"task": "Task #2"
+					} ]
+				}, {
+					"category": "Sun-Mon",
+					"segments": [ {
+						"start": 15,
+						"duration": 3,
+						"color": "#7E585F",
+						"task": "Task #2"
+					} ]
+				}  ],
+				"chartScrollbar": {},
+				"chartCursor": {
+					"valueBalloonsEnabled": false,
+					"cursorAlpha": 0.1,
+					"valueLineBalloonEnabled": true,
+					"valueLineEnabled": true,
+					"fullWidth": true
+				},
+				"responsive": {
+					"enabled": true
+				}
+			} );
+		</script>
+	</head>
+	<body>
+		<div id="chartdiv"></div>
+	</body>
+</html>
